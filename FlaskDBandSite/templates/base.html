@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="header_name"><h3>Site</h3></div>
+        <div class="header_links">
+            <a href="/" class="header_link">Home</a>
+            <a href="/about" class="header_link">User</a>
+            <a href="/user/Bob/35" class="header_link">Admin</a>
+        </div>
+    </header>
+{% block body %}{% endblock %}
+</body>
+</html>

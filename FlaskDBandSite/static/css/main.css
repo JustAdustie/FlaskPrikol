@@ -1,0 +1,27 @@
+.header {
+    max-width: 100%;
+    min-height: 50px;
+    background-color: lightblue;
+    margin: auto;
+    display: flex;
+    justify-content: space-around:
+}
+.header_links {
+    min-width: 70%;
+    max-width: 90%
+    padding-left: 10%;
+    padding-top: 2%;
+    text-align: center;
+    justify-content: space-around:
+}
+.header_link {
+    margin-left: 10%;
+    margin-right: 10%;
+
+    color: #787978;
+    text-decoration: none;
+}
+.header_link:hover {
+    color:#545454;
+    text-decoration: underline;
+}
