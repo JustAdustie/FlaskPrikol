@@ -1,27 +1,36 @@
-.header {
-    max-width: 100%;
-    min-height: 50px;
-    background-color: lightblue;
-    margin: auto;
-    display: flex;
-    justify-content: space-around:
+.auth_title {
+    font-size: 160%;
+    margin-bottom: -8px;
 }
-.header_links {
-    min-width: 70%;
-    max-width: 90%
-    padding-left: 10%;
-    padding-top: 2%;
+.auth {
     text-align: center;
-    justify-content: space-around:
+    margin-top: 15%;
+    font-size: 200%;
 }
-.header_link {
-    margin-left: 10%;
-    margin-right: 10%;
-
-    color: #787978;
-    text-decoration: none;
+.input_field {
+    min-width: 25%;
+    font-size: 100%;
+    margin-top: 10px;
 }
-.header_link:hover {
-    color:#545454;
-    text-decoration: underline;
+.input_button {
+    color: black;
+    font-size: 130%;
+    margin-top: 10px;
+}
+.input_button:hover {
+    color:black;
+    background-color:darkgrey;
+}
+.authList_title {
+    max-width: 40%;
+    text-align: center;
+}
+.authList_info {
+    display: flex;
+    justify-content: space-around;
+    margin-right: 50%;
+}
+.authTable {
+    margin-left: 4%;
+    font-size: 120%;
 }

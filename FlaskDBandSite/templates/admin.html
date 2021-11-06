@@ -5,5 +5,18 @@ Admin page
 {% endblock %}
 
 {% block body %}
-<h1>Admin info</h1>
+    <div class="authList">
+        <h1 class="authList_title">Список логинов и паролей сотрудников</h1>
+        <table class="authTable">
+            <tr><th>Логин</th><th>Пароль</th></tr>
+            {% for i in allauth %}
+                <tr>
+                    <td>{{ i.login }}</td>
+                    <td>{{ i.password }}</td>
+                    <td><a href="/admin/{{ i.login }}{{ i.password }}/delete">Удалить</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    </div>
 {% endblock %}

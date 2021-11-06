@@ -5,5 +5,13 @@ Main Page
 {% endblock %}
 
 {% block body %}
-<h1>Home</h1>
+<h1>Название компании</h1>
+<div class="auth">
+    <h3 class="auth_title">Введите данные</h3>
+    <form method="post">
+        <input type="text" name="login" id="login" class="input_field" placeholder="Логин"><br>
+        <input type="password" name="password" id="password" class="input_field" placeholder="Пароль"><br>
+        <input type="submit" class="input_button" value="Отправить">
+    </form>
+</div>
 {% endblock %}
