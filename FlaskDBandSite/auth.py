@@ -7,6 +7,7 @@ from __init__ import db
 
 auth = Blueprint('auth', __name__) 
 
+
 @auth.route('/', methods=['GET', 'POST'])
 def login():
     if request.method=='GET': 
@@ -18,16 +19,12 @@ def login():
        
         if not user:
             flash('Please sign up before!')
-            print("123123")
             return redirect(url_for('auth.login'))
         elif not check_password_hash(user.password, password):
             flash('Please check your login details and try again.')
-            print("123123")
             return redirect(url_for('auth.login'))
 
-        print("123123")
         login_user(user)
-        print("13123123123123123")
         return redirect(url_for('main.admin'))
         
 

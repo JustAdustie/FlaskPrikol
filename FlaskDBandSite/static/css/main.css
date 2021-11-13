@@ -37,18 +37,38 @@ body{
     color:black;
     background-color:darkgrey;
 }
-.authList_title {
-    max-width: 40%;
-    text-align: center;
+
+.authTitle {
+    color: white;
+    font-size: 300%;
 }
-.authList_info {
-    display: flex;
-    justify-content: space-around;
-    margin-right: 50%;
+
+.authTable_title {
+    color: white;
+    font-size: 150%;
+    padding-left: 25%;
+    padding-right: 50px;
 }
-.authTable {
-    margin-left: 4%;
-    font-size: 120%;
+
+table {
+    width: 75%;
+    color: white;
+    font-size: 150%;
+    margin-left: 2%;
+}
+
+.authTable_content {
+
+}
+
+.authTable_link {
+    color: white;
+    text-decoration: none;
+}
+
+.authTable_link:hover {
+    color: grey;
+    text-decoration: underline;
 }
 
 .input_button{
