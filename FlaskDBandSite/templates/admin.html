@@ -5,17 +5,25 @@ Admin page
 {% endblock %}
 
 {% block body %}
+
+    <form method="POST" action="/logout">
+        <div class="logout_admin">
+            <input type="submit" class="logout_button" value="Выйти">
+        </div>
+    </form>
+
     <div>
         <h1 class="authTitle">Список карт</h1>
         <table>
             <tr><th class="authTable_title">ID</th><th class="authTable_title">Имя</th></tr>
             {% for i in allcards %}
+
                 <tr class="authTable_content">
-                    <td>{{ i.id }}</td>
+                    <td>{{ loop.index }}</td>
                     <td>{{ i.card }}</td>
                     <td>{{ i.name }}</td>
                     <td><a href="" class="authTable_link">Редактировать</a></td>
-                    <td><a href="" class="authTable_link">Удалить</a></td>
+                    <td><a href="/admin/{{i.id}}/del" class="authTable_link">Удалить</a></td>
                 </tr>
             {% endfor %}
         </table>

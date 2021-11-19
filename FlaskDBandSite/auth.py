@@ -18,17 +18,18 @@ def login():
         user = User.query.filter_by(login=login).first()
        
         if not user:
-            flash('Please sign up before!')
             return redirect(url_for('auth.login'))
         elif not check_password_hash(user.password, password):
-            flash('Please check your login details and try again.')
             return redirect(url_for('auth.login'))
-
-        login_user(user)
-        return redirect(url_for('main.admin'))
+        if user.priority == 1:
+            login_user(user)
+            return redirect(url_for('main.admin'))
+        elif user.priority == 2:
+            login_user(user)
+            return redirect(url_for('main.guard'))
         
 
-@auth.route('/logout') 
+@auth.route('/logout', methods = ['POST'])
 @login_required
 def logout():
     logout_user()

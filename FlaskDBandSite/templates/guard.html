@@ -6,4 +6,9 @@ Guard page
 
 {% block body %}
 <h1>Guard</h1>
+    <form method="POST" action="/logout">
+        <div class="logout_guard">
+            <input type="submit" class="logout_button" value="Выйти">
+        </div>
+    </form>
 {% endblock %}

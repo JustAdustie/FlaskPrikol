@@ -92,3 +92,23 @@ table {
     color: black;
     box-shadow: 0 -3px #949494 inset;
 }
+
+.logout_button {
+    display:inline-flex;
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    background-color: #3D3D3D;
+    border: none;
+    width: 120px;
+    height: 50px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 20px;
+    transition:  0.5s;
+}
+.logout_admin {
+    position: absolute;
+    right: 5%;
+    top: 6%;
+}
