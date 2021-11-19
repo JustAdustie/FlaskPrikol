@@ -46,8 +46,8 @@ body{
 .authTable_title {
     color: white;
     font-size: 150%;
-    padding-left: 25%;
-    padding-right: 50px;
+    padding-left: 20%;
+    padding-right: 90px;
 }
 
 table {
@@ -55,10 +55,6 @@ table {
     color: white;
     font-size: 150%;
     margin-left: 2%;
-}
-
-.authTable_content {
-
 }
 
 .authTable_link {
@@ -111,4 +107,29 @@ table {
     position: absolute;
     right: 5%;
     top: 6%;
+}
+.card_createTitle {
+    color: white;
+    font-size: 250%;
+    margin-left: 170px;
+}
+.cardid_input_field {
+    min-width: 25%;
+    min-height: 40%;
+    box-shadow:0 0 15px 3px rgba(28,28,28);
+    border-radius: 10px;
+    font-size: 120%;
+    margin-top: 10px;
+    margin-right: 2%;
+}
+.cardid_create {
+    display: flex;
+    margin-left: 50px;
+}
+.cardid_submit {
+    box-shadow:0 0 15px 3px rgba(28,28,28);
+    border-radius: 6px;
+    margin-top: 15px;
+    font-size: 120%;
+    margin-left: 205px;
 }

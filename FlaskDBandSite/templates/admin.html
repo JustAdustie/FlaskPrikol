@@ -22,11 +22,30 @@ Admin page
                     <td>{{ loop.index }}</td>
                     <td>{{ i.card }}</td>
                     <td>{{ i.name }}</td>
-                    <td><a href="" class="authTable_link">Редактировать</a></td>
-                    <td><a href="/admin/{{i.id}}/del" class="authTable_link">Удалить</a></td>
+                    <td>
+                        <details>
+                            <summary class="authTable_link">Редактировать</summary>
+                            <div class="edit_window">
+                                <form method="POST" action="/admin/{{ i.id }}/edit">
+                                    <input type="text" class="input_field" name="cardinput" id="cardinput" value="{{ i.card }}">
+                                    <input type="text" class="input_field" name="nameinput" id="nameinput" value="{{ i.name }}">
+                                    <input type="submit" class="input_field" value="Сохранить">
+                                </form>
+                            </div>
+                        </details>
+                    </td>
+                    <td><a href="/admin/{{ i.id }}/del" class="authTable_link">Удалить</a></td>
                 </tr>
             {% endfor %}
         </table>
 
+        <h1 class="card_createTitle">Добавить данные</h1>
+        <div class="cardid_create">
+            <form method="POST" action="/admin/card_create">
+            <input type="text" class="cardid_input_field" name="card_add" id="card_add" placeholder="ID карты">
+            <input type="text" class="cardid_input_field" name="name_add" id="name_add" placeholder="Имя пользователя">
+            <input type="submit" class="cardid_submit" value="Сохранить">
+            </form>
+        </div>
     </div>
 {% endblock %}
