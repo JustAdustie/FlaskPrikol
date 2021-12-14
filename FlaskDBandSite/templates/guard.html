@@ -5,10 +5,25 @@ Guard page
 {% endblock %}
 
 {% block body %}
-<h1>Guard</h1>
-    <form method="POST" action="/logout">
+    <div class="logout_admin">
+        <form method="POST" action="/logout">
         <div class="logout_guard">
             <input type="submit" class="logout_button" value="Выйти">
         </div>
     </form>
+    </div>
+    <div class="guard_table">
+        <h1 class="authTitle">Список карт</h1>
+        <table>
+            <tr><th class="authTable_title_guard">ID</th><th class="authTable_title_guard">Имя</th></tr>
+            {% for i in allcards %}
+
+                <tr class="authTable_content_guard">
+                    <td>{{ loop.index }}</td>
+                    <td>{{ i.card }}</td>
+                    <td>{{ i.name }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}

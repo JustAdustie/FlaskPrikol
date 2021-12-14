@@ -18,7 +18,9 @@ def admin():
 @main.route('/guard')
 @login_required
 def guard():
-    return render_template('guard.html')
+    allcards = Card.query.order_by(Card.id).all()
+    tmp = 0
+    return render_template('guard.html', allcards =allcards, tmp=tmp)
 
 
 @main.route("/admin/<int:id>/del")

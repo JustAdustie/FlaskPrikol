@@ -49,12 +49,18 @@ body{
     padding-left: 20%;
     padding-right: 90px;
 }
-
+.authTable_title_guard {
+    color: white;
+    font-size: 150%;
+    padding-left: 10px;
+}
+.guard_table {
+    padding-left: 2%;
+}
 table {
     width: 75%;
     color: white;
     font-size: 150%;
-    margin-left: 2%;
 }
 
 .authTable_link {
