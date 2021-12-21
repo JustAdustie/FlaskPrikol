@@ -14,18 +14,10 @@ while True:
     if not error:
       print("UID: " + str(uid))
       f = open("tgs.txt","a")
-      f.write(str(uid)+"\n")
+      f.write(str(uid).replace("[","").replace("]","").replace(",","")+"\n")
       f.flush()
       f.close()
       c+=1
-      # Select Tag is required before Auth
-      if not rdr.select_tag(uid):
-        # Auth for block 10 (block 2 of sector 2) using default shipping key A
-        if not rdr.card_auth(rdr.auth_a, 10, [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF], uid):
-          # This will print something like (False, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-          print("Reading block 10: " + str(rdr.read(10)))
-          # Always stop crypto1 when done working
-          rdr.stop_crypto()
 
   if c >= 1000:
     f = open("tgs.txt","w")
@@ -33,5 +25,4 @@ while True:
     f.close()
     c=0
 
-# Calls GPIO cleanup
 rdr.cleanup()

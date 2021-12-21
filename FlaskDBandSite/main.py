@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import login_required, current_user
 from __init__ import create_app, db
 from models import Card
-
+import multiprocessing as mp
 
 main = Blueprint('main', __name__)
 
