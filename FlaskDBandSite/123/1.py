@@ -2,6 +2,8 @@ from pirc522 import RFID
 from time import sleep
 import RPi.GPIO as GPIO
 import sqlite3
+import os.path
+
 rdr = RFID()
 f = open("tgs.txt","w")
 f.close()
@@ -15,10 +17,16 @@ print(GPIO.getmode())
 #
 connection = sqlite3.connect('db.sqlite')
 cursor = connection.cursor()
-print("321")
 while True:
-  sleep(2)
-  rdr.wait_for_tag()
+  sleep(1)
+  if os.path.isfile("./opendoor.txt"):
+    print("Open Door")
+    GPIO.output(LED_PIN, GPIO.HIGH)
+    sleep(2)
+    GPIO.output(LED_PIN, GPIO.LOW)
+    os.remove("./opendoor.txt")
+
+  #rdr.wait_for_tag()
   (error, tag_type) = rdr.request()
   if not error:
     print("Tag detected")

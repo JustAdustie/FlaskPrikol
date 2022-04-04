@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import login_required, current_user
 from __init__ import create_app, db
 from models import Card
+import os.path
 import paramiko
 
 main = Blueprint('main', __name__)
@@ -21,10 +22,18 @@ def put_file():
     sftp.close()
 
 
+
 @main.route('/admin/door', methods=['POST'])
 def doorswitcheradmin():
     if request.form['btn']:
         print('1')
+        temp_file = open("opendoor.txt", "w")
+        temp_file.close()
+        client.connect(hostname=host, username=user, password=secret, port=port)
+        sftp = client.open_sftp()
+        sftp.put("C:/Users/dusti/Desktop/FlaskDBandSite/opendoor.txt", "./Desktop/opendoor.txt")
+        sftp.close()
+        os.remove("opendoor.txt")
     return redirect(url_for('main.admin'))
 
 
@@ -41,6 +50,13 @@ def admin():
 def doorswitcherguard():
     if request.form['btn']:
         print('1')
+        temp_file = open("opendoor.txt", "w")
+        temp_file.close()
+        client.connect(hostname=host, username=user, password=secret, port=port)
+        sftp = client.open_sftp()
+        sftp.put("C:/Users/dusti/Desktop/FlaskDBandSite/opendoor.txt", "./Desktop/opendoor.txt")
+        sftp.close()
+        os.remove("opendoor.txt")
     return redirect(url_for('main.guard'))
 
 
