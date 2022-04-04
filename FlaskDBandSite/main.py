@@ -12,13 +12,23 @@ user = "pi"
 secret = "raspberry"
 client = paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+
 def put_file():
     client.connect(hostname=host, username=user, password=secret, port=port)
     sftp = client.open_sftp()
-    sftp.put("C:/Users/dusti/Desktop/FlaskPrikol/FlaskDBandSite/db.sqlite","./Desktop/db.sqlite")
+    sftp.put("C:/Users/dusti/Desktop/FlaskPrikol/FlaskDBandSite/db.sqlite", "./Desktop/db.sqlite")
     sftp.close()
 
-@main.route('/admin') 
+
+@main.route('/admin/door', methods=['POST'])
+def doorswitcheradmin():
+    if request.form['btn']:
+        print('1')
+    return redirect(url_for('main.admin'))
+
+
+@main.route('/admin')
 @login_required
 def admin():
     #
@@ -27,12 +37,19 @@ def admin():
     return render_template('admin.html', allcards=allcards, tmp=tmp)
 
 
+@main.route('/guard/door', methods=['POST'])
+def doorswitcherguard():
+    if request.form['btn']:
+        print('1')
+    return redirect(url_for('main.guard'))
+
+
 @main.route('/guard')
 @login_required
 def guard():
     allcards = Card.query.order_by(Card.id).all()
     tmp = 0
-    return render_template('guard.html', allcards =allcards, tmp=tmp)
+    return render_template('guard.html', allcards=allcards, tmp=tmp)
 
 
 @main.route("/admin/<int:id>/del")
@@ -74,7 +91,7 @@ def cardcreate():
         card = request.form['card_add']
         name = request.form['name_add']
         try:
-            new_card = Card(card=card,name=name)
+            new_card = Card(card=card, name=name)
             db.session.add(new_card)
             db.session.commit()
             return redirect(url_for('main.admin')), put_file()

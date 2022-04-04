@@ -8,6 +8,7 @@
 body{
     font-family: 'Oswald', sans-serif;
     background-color: #272A30;
+
 }
 
 .auth_title {
@@ -139,4 +140,18 @@ table {
     font-size: 120%;
     margin-left: 205px;
 }
+
+.doorSwitchBtn {
+
+}
+
+.doorSwitcherMainGuard {
+    position: absolute;
+    right: 50%;
+}
+
+.doorSwitcherMainAdmin {
+
+}
+
 
