@@ -2,14 +2,26 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import login_required, current_user
 from __init__ import create_app, db
 from models import Card
-import multiprocessing as mp
+import paramiko
 
 main = Blueprint('main', __name__)
 
+host = "192.168.1.133"
+port = 22
+user = "pi"
+secret = "raspberry"
+client = paramiko.SSHClient()
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+def put_file():
+    client.connect(hostname=host, username=user, password=secret, port=port)
+    sftp = client.open_sftp()
+    sftp.put("C:/Users/dusti/Desktop/FlaskPrikol/FlaskDBandSite/db.sqlite","./Desktop/db.sqlite")
+    sftp.close()
 
 @main.route('/admin') 
 @login_required
 def admin():
+    #
     allcards = Card.query.order_by(Card.id).all()
     tmp = 0
     return render_template('admin.html', allcards=allcards, tmp=tmp)
@@ -27,11 +39,10 @@ def guard():
 @login_required
 def delete(id):
     card = Card.query.get(id)
-
     try:
         db.session.delete(card)
         db.session.commit()
-        return redirect(url_for('main.admin'))
+        return redirect(url_for('main.admin')), put_file()
     except Exception as e:
         pass
 
@@ -49,9 +60,9 @@ def editfunc(id):
             db.session.delete(old_card)
             db.session.add(editCard)
             db.session.commit()
-            return redirect(url_for('main.admin'))
-        except:
-            pass
+            return redirect(url_for('main.admin')), put_file()
+        except Exception as e:
+            print(e)
     else:
         return redirect(url_for('main.admin'))
 
@@ -66,9 +77,9 @@ def cardcreate():
             new_card = Card(card=card,name=name)
             db.session.add(new_card)
             db.session.commit()
-            return redirect(url_for('main.admin'))
-        except:
-            pass
+            return redirect(url_for('main.admin')), put_file()
+        except Exception as e:
+            print(e)
 
 
 app = create_app()

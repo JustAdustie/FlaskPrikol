@@ -15,13 +15,14 @@ def check():
 		client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 		client.connect(hostname=host, username=user, password=secret, port=port)
 		sftp = client.open_sftp()
-		sftp.get("./Desktop/tgs.txt","C:/Users/dusti/Desktop/FlaskDBandSite/logs/tgx.txt")
+		sftp.get("./Desktop/tgs.txt","F:/Утилиты/Project/FlaskPrikol/FlaskDBandSite/logs/tgs.txt")
+		
 		sftp.close()
 
 		connection = sqlite3.connect('db.sqlite')
 		cursor = connection.cursor()
 
-		with open("C:/Users/dusti/Desktop/FlaskDBandSite/logs/tgx.txt") as f:
+		with open("F:/Утилиты/Project/FlaskPrikol/FlaskDBandSite/logs/tgs.txt") as f:
 			for i in f:
 				temp.append(i[:-1])
 			temp = temp[len(temp)-1]
